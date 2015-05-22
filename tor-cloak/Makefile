@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tor-cloak
-PKG_VERSION:=0.2.5.12
+PKG_VERSION:=0.2.6.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=tor-$(PKG_VERSION).tar.gz
