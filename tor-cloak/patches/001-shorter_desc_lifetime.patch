@@ -1,6 +1,6 @@
 --- a/src/or/microdesc.c
 +++ b/src/or/microdesc.c
-@@ -344,7 +344,7 @@ microdesc_cache_reload(microdesc_cache_t
+@@ -386,7 +386,7 @@ microdesc_cache_reload(microdesc_cache_t
  
  /** By default, we remove any microdescriptors that have gone at least this
   * long without appearing in a current consensus. */
