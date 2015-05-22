@@ -22,6 +22,8 @@ PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
+TARGET_CFLAGS += -std=c99
+
 define Package/tor-cloak/Default
   SECTION:=net
   CATEGORY:=Network
