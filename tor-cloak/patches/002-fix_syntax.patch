@@ -1,0 +1,34 @@
+--- a/src/common/address.c
++++ b/src/common/address.c
+@@ -499,7 +499,8 @@ tor_addr_parse_PTR_name(tor_addr_t *resu
+       return -1;
+ 
+     cp = address;
+-    for (int i = 0; i < 16; ++i) {
++    int i;
++    for (i = 0; i < 16; ++i) {
+       n0 = hex_decode_digit(*cp++); /* The low-order nybble appears first. */
+       if (*cp++ != '.') return -1;  /* Then a dot. */
+       n1 = hex_decode_digit(*cp++); /* The high-order nybble appears first. */
+--- a/src/test/test_routerlist.c
++++ b/src/test/test_routerlist.c
+@@ -30,7 +30,8 @@ test_routerlist_initiate_descriptor_down
+   smartlist_t *digests = smartlist_new();
+   (void)arg;
+ 
+-  for (int i = 0; i < 20; i++) {
++  int i; 
++  for (i = 0; i < 20; i++) {
+     smartlist_add(digests, (char*)prose);
+   }
+ 
+@@ -74,7 +75,8 @@ test_routerlist_launch_descriptor_downlo
+   char *cp;
+   (void)arg;
+ 
+-  for (int i = 0; i < 100; i++) {
++  int i;
++  for (i = 0; i < 100; i++) {
+     cp = tor_malloc(DIGEST256_LEN);
+     tt_assert(cp);
+     crypto_rand(cp, DIGEST256_LEN);

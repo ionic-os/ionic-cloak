@@ -8,21 +8,20 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tor-cloak
+#PKG_VERSION:=0.2.6.8
 PKG_VERSION:=0.2.6.8
 PKG_RELEASE:=1
 
 PKG_SOURCE:=tor-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.torproject.org/dist \
 	https://archive.torproject.org/tor-package-archive
-PKG_MD5SUM:=20a8c1f8cd7e8c912c4f3f0b67740fa5
+PKG_MD5SUM:=a43b4dc6a95d219927aab0a2bb7ed322
 
 PKG_BUILD_DEPENDS:=libminiupnpc libnatpmp
 PKG_BUILD_DIR:=$(BUILD_DIR)/tor-$(PKG_VERSION)
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
-
-TARGET_CFLAGS += -std=c99
 
 define Package/tor-cloak/Default
   SECTION:=net
@@ -80,10 +79,12 @@ endef
 CONFIGURE_ARGS += \
 	--with-libevent-dir="$(STAGING_DIR)/usr" \
 	--with-ssl-dir="$(STAGING_DIR)/usr" \
+        --enable-upnp \
 	--with-libminiupnpc-dir="$(STAGING_DIR)/usr" \
+        --enable-nat-pmp \
 	--with-libnatpmp-dir="$(STAGING_DIR)/usr" \
 	--disable-asciidoc \
-	--disable-threads
+	--disable-seccomp
 
 ifneq ($(CONFIG_SSP_SUPPORT),y)
 	CONFIGURE_ARGS += \
